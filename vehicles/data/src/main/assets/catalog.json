@@ -1,0 +1,97 @@
+[
+  {
+    "brandId": "audi",
+    "brandName": "Audi",
+    "series": [
+      { "id": "a1", "name": "A1", "minYear": 2010, "maxYear": 2023 },
+      { "id": "a3", "name": "A3", "minYear": 1996, "maxYear": 2023 },
+      { "id": "a4", "name": "A4", "minYear": 1994, "maxYear": 2023 },
+      { "id": "a5", "name": "A5", "minYear": 2007, "maxYear": 2023 },
+      { "id": "a6", "name": "A6", "minYear": 1994, "maxYear": 2023 },
+      { "id": "a7", "name": "A7", "minYear": 2010, "maxYear": 2023 },
+      { "id": "a8", "name": "A8", "minYear": 1994, "maxYear": 2023 },
+      { "id": "q2", "name": "Q2", "minYear": 2016, "maxYear": 2023 },
+      { "id": "q3", "name": "Q3", "minYear": 2011, "maxYear": 2023 },
+      { "id": "q4", "name": "Q4", "minYear": 2019, "maxYear": 2023 },
+      { "id": "q5", "name": "Q5", "minYear": 2008, "maxYear": 2023 },
+      { "id": "q7", "name": "Q7", "minYear": 2005, "maxYear": 2023 },
+      { "id": "q8", "name": "Q8", "minYear": 2018, "maxYear": 2023 },
+      { "id": "tt", "name": "TT", "minYear": 1998, "maxYear": 2023 },
+      { "id": "r8", "name": "R8", "minYear": 2006, "maxYear": 2023 },
+      { "id": "etron", "name": "e-Tron", "minYear": 2019, "maxYear": 2023 }
+    ],
+    "features": ["Diagnostics", "Live Data", "Battery Check"]
+  },
+  {
+    "brandId": "bmw",
+    "brandName": "BMW",
+    "series": [
+      { "id": "1series", "name": "1 Series", "minYear": 2010, "maxYear": 2023 },
+      { "id": "2series", "name": "2 Series", "minYear": 2004, "maxYear": 2023 },
+      { "id": "3series", "name": "3 Series", "minYear": 2005, "maxYear": 2023 },
+      { "id": "4series", "name": "4 Series", "minYear": 2014, "maxYear": 2023 },
+      { "id": "5series", "name": "5 Series", "minYear": 2010, "maxYear": 2023 },
+      { "id": "6series", "name": "6 Series", "minYear": 2011, "maxYear": 2023 },
+      { "id": "7series", "name": "7 Series", "minYear": 2009, "maxYear": 2023 },
+      { "id": "8series", "name": "8 Series", "minYear": 2019, "maxYear": 2023 },
+      { "id": "x1", "name": "X1 Series", "minYear": 2010, "maxYear": 2023 },
+      { "id": "x2", "name": "X2 Series", "minYear": 2018, "maxYear": 2023 },
+      { "id": "x3", "name": "X3 Series", "minYear": 2004, "maxYear": 2023 },
+      { "id": "x4", "name": "X4 Series", "minYear": 2014, "maxYear": 2023 },
+      { "id": "x5", "name": "X5 Series", "minYear": 2000, "maxYear": 2023 },
+      { "id": "x6", "name": "X6 Series", "minYear": 2008, "maxYear": 2023 },
+      { "id": "x7", "name": "X7 Series", "minYear": 2019, "maxYear": 2023 },
+      { "id": "z4", "name": "Z4", "minYear": 2002, "maxYear": 2023 }
+    ],
+    "features": ["Diagnostics", "Live Data", "Battery Check", "Car Check"]
+  },
+  {
+    "brandId": "mercedes",
+    "brandName": "Mercedes",
+    "series": [
+      { "id": "aclass", "name": "A Class", "minYear": 1997, "maxYear": 2023 },
+      { "id": "bclass", "name": "B Class", "minYear": 2005, "maxYear": 2023 },
+      { "id": "cclass", "name": "C Class", "minYear": 1993, "maxYear": 2023 },
+      { "id": "cla", "name": "CLA Class", "minYear": 2013, "maxYear": 2023 },
+      { "id": "cls", "name": "CLS Class", "minYear": 2004, "maxYear": 2023 },
+      { "id": "eclass", "name": "E Class", "minYear": 1993, "maxYear": 2023 },
+      { "id": "gclass", "name": "G-Class", "minYear": 1979, "maxYear": 2023 },
+      { "id": "gla", "name": "GLA Class", "minYear": 2014, "maxYear": 2023 },
+      { "id": "glb", "name": "GLB Class", "minYear": 2019, "maxYear": 2023 },
+      { "id": "glc", "name": "GLC Class", "minYear": 2016, "maxYear": 2023 },
+      { "id": "gle", "name": "GLE Class", "minYear": 1997, "maxYear": 2023 },
+      { "id": "gls", "name": "GLS Class", "minYear": 2006, "maxYear": 2023 },
+      { "id": "sclass", "name": "S Class", "minYear": 1972, "maxYear": 2023 },
+      { "id": "sl", "name": "SL Class", "minYear": 1954, "maxYear": 2023 },
+      { "id": "slc", "name": "SLC Class", "minYear": 1996, "maxYear": 2023 },
+      { "id": "glecoupe", "name": "GLE Coupe", "minYear": 2015, "maxYear": 2023 },
+      { "id": "glccoupe", "name": "GLC Coupe", "minYear": 2016, "maxYear": 2023 },
+      { "id": "glscoupe", "name": "GLS Coupe", "minYear": 2015, "maxYear": 2023 },
+      { "id": "amggt", "name": "AMG GT", "minYear": 2015, "maxYear": 2023 },
+      { "id": "eqc", "name": "EQC", "minYear": 2019, "maxYear": 2023 }
+    ],
+    "features": ["Diagnostics", "Battery Check", "Car Check"]
+  },
+  {
+    "brandId": "vw",
+    "brandName": "Volkswagen",
+    "series": [
+      { "id": "polo", "name": "Polo", "minYear": 1975, "maxYear": 2023 },
+      { "id": "golf", "name": "Golf", "minYear": 1974, "maxYear": 2023 },
+      { "id": "passat", "name": "Passat", "minYear": 1973, "maxYear": 2023 },
+      { "id": "arteon", "name": "Arteon", "minYear": 2017, "maxYear": 2023 },
+      { "id": "tiguan", "name": "Tiguan", "minYear": 2007, "maxYear": 2023 },
+      { "id": "troc", "name": "T-Roc", "minYear": 2017, "maxYear": 2023 },
+      { "id": "touareg", "name": "Touareg", "minYear": 2002, "maxYear": 2023 },
+      { "id": "id3", "name": "ID 3", "minYear": 2020, "maxYear": 2023 },
+      { "id": "id4", "name": "ID 4", "minYear": 2020, "maxYear": 2023 },
+      { "id": "idbuzz", "name": "ID Buzz", "minYear": 2022, "maxYear": 2023 },
+      { "id": "amarok", "name": "Amarok", "minYear": 2010, "maxYear": 2023 },
+      { "id": "caddy", "name": "Caddy", "minYear": 1980, "maxYear": 2023 },
+      { "id": "transporter", "name": "Transporter", "minYear": 1950, "maxYear": 2023 },
+      { "id": "california", "name": "California", "minYear": 1988, "maxYear": 2023 },
+      { "id": "caravelle", "name": "Caravelle", "minYear": 1990, "maxYear": 2023 }
+    ],
+    "features": ["Diagnostics", "Battery Check"]
+  }
+]

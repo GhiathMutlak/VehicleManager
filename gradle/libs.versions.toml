@@ -1,5 +1,6 @@
 [versions]
 agp = "8.12.1"
+datastorePreferences = "1.1.7"
 kotlin = "2.2.10"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -17,6 +18,7 @@ material = "1.12.0"
 jetbrainsKotlinJvmVersion = "2.2.10"
 ksp = "2.2.10-2.0.2"
 androidTools = "31.12.1"
+kotlinx-serialization = "1.9.0"
 
 # Project versions
 projectApplicationId = "com.carly.vehiclesmanager"
@@ -28,6 +30,10 @@ projectVersionCode = "1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -75,6 +81,8 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvmVersion" }
 dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 # Convention Plugins
 carly-android-application = { id = "carly.android.application", version = "unspecified" }

@@ -32,4 +32,5 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
 
     implementation(projects.vehicles.presentation)
+    implementation(projects.vehicles.data)
 }
