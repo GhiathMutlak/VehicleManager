@@ -1,4 +1,4 @@
-package com.carly.vehiclemanager.ui.theme
+package com.carly.vehicles.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

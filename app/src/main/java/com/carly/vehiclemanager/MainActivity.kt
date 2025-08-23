@@ -8,11 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.carly.vehiclemanager.ui.theme.VehicleManagerTheme
+import com.carly.vehicles.presentation.ui.theme.VehicleManagerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +19,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen().apply {
             // Keep splash screen until the app is ready
             // TODO: Replace with actual loading logic
-            setKeepOnScreenCondition { true }
+            setKeepOnScreenCondition { false }
         }
 
         enableEdgeToEdge()
@@ -29,7 +27,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             VehicleManagerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
+                    Text(
+                        modifier = Modifier.padding(innerPadding),
+                        text = "Welcome to Vehicle Manager",
+                    )
                 }
             }
         }

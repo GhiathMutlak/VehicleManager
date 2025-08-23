@@ -1,4 +1,6 @@
 pluginManagement {
+    includeBuild("build-logic")
+
     repositories {
         google {
             content {
@@ -19,6 +21,10 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Vehicle Manager"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+rootProject.name = "VehicleManager"
 include(":app")
- 
+include(":vehicles:data")
+include(":vehicles:presentation")
+include(":vehicles:domain")
