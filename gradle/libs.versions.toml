@@ -12,7 +12,6 @@ room = "2.7.2"
 hilt = "2.57.1"
 coroutines = "1.10.2"
 coreSplashscreen = "1.0.1"
-jetbrainsKotlinJvm = "2.2.10"
 appcompat = "1.7.1"
 material = "1.12.0"
 jetbrainsKotlinJvmVersion = "2.2.10"
@@ -74,6 +73,8 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvmVersion" }
+dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 # Convention Plugins
 carly-android-application = { id = "carly.android.application", version = "unspecified" }

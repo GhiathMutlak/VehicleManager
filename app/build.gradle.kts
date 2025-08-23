@@ -8,16 +8,6 @@ android {
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
 }
 
 dependencies {
@@ -41,7 +31,5 @@ dependencies {
     // Splash screen
     implementation(libs.androidx.core.splashscreen)
 
-    implementation(projects.vehicles.domain)
-    implementation(projects.vehicles.data)
     implementation(projects.vehicles.presentation)
 }

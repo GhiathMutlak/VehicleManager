@@ -1,16 +1,13 @@
-import com.android.build.api.dsl.BaseFlavor
-import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
-import com.android.build.api.dsl.LibraryVariantDimension
 import com.carly.convention.ExtensionType
 import com.carly.convention.configureBuildTypes
 import com.carly.convention.configureKotlinAndroid
+import com.carly.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
-import kotlin.run
 
 class AndroidLibraryConventionPlugin: Plugin<Project> {
 
@@ -19,6 +16,8 @@ class AndroidLibraryConventionPlugin: Plugin<Project> {
             pluginManager.run {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
+                apply("com.google.dagger.hilt.android")
+                apply("com.google.devtools.ksp")
             }
 
             extensions.configure<LibraryExtension> {
@@ -36,6 +35,8 @@ class AndroidLibraryConventionPlugin: Plugin<Project> {
             }
 
             dependencies {
+                "implementation"(libs.findLibrary("hilt.android").get())
+                "ksp"(libs.findLibrary("hilt.compiler").get())
                 "testImplementation"(kotlin("test"))
             }
         }

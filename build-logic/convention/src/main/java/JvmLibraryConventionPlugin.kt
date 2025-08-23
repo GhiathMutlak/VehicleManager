@@ -1,7 +1,6 @@
 import com.carly.convention.configureKotlinJvm
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import kotlin.run
 
 class JvmLibraryConventionPlugin: Plugin<Project> {
 

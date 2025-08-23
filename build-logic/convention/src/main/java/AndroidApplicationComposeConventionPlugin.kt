@@ -12,6 +12,8 @@ class AndroidApplicationComposeConventionPlugin: Plugin<Project> {
             pluginManager.run {
                 apply("carly.android.application")
                 apply("org.jetbrains.kotlin.plugin.compose")
+                apply("com.google.dagger.hilt.android")
+                apply("com.google.devtools.ksp")
             }
 
             val extension = extensions.getByType<ApplicationExtension>()
