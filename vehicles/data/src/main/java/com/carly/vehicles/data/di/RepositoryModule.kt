@@ -7,8 +7,8 @@ import com.carly.vehicles.data.database.dao.FeatureDao
 import com.carly.vehicles.data.database.dao.SeriesDao
 import com.carly.vehicles.data.datasource.catalog.CatalogLoader
 import com.carly.vehicles.data.datasource.catalog.CatalogSeeder
-import com.carly.vehicles.data.datastore.DataStoreSelectionRepo
-import com.carly.vehicles.data.datastore.SeedFlagRepo
+import com.carly.vehicles.data.repo.datastore.DataStoreSelectionRepo
+import com.carly.vehicles.data.repo.datastore.SeedFlagRepo
 import com.carly.vehicles.domain.repo.SelectionRepo
 import dagger.Module
 import dagger.Provides

@@ -9,6 +9,10 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface VehicleDao {
+
+    @Query("SELECT * FROM vehicles WHERE id = :id")
+    suspend fun getById(id: Long): VehicleEntity?
+
     @Query("SELECT * FROM vehicles ORDER BY id DESC")
     fun observeAll(): Flow<List<VehicleEntity>>
 

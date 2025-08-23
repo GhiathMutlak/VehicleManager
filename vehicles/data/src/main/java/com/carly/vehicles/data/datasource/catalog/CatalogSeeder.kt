@@ -6,7 +6,7 @@ import com.carly.vehicles.data.database.dao.SeriesDao
 import com.carly.vehicles.data.database.entity.BrandEntity
 import com.carly.vehicles.data.database.entity.FeatureEntity
 import com.carly.vehicles.data.database.entity.SeriesEntity
-import com.carly.vehicles.data.datastore.SeedFlagRepo
+import com.carly.vehicles.data.repo.datastore.SeedFlagRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

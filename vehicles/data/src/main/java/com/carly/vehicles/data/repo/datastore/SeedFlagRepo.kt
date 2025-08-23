@@ -1,4 +1,4 @@
-package com.carly.vehicles.data.datastore
+package com.carly.vehicles.data.repo.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
