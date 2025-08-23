@@ -29,14 +29,14 @@ class CatalogSeeder @Inject constructor(
 
         // 3. Convert DTOs to entities
         val brandEntities = catalog.map {
-            BrandEntity(it.id, it.name)
+            BrandEntity(it.brandId, it.brandName)
         }
 
         val seriesEntities = catalog.flatMap { brand ->
             brand.series.map { s ->
                 SeriesEntity(
                     id = s.id,
-                    brandId = brand.id,
+                    brandId = brand.brandId,
                     name = s.name,
                     minYear = s.minYear,
                     maxYear = s.maxYear
@@ -45,17 +45,12 @@ class CatalogSeeder @Inject constructor(
         }
 
         val featureEntities = catalog.flatMap { brand ->
-            println("Processing brand: ${brand.name}")
-            brand.series.flatMap { series ->
-                println("  Processing series: ${series.name} with features: ${series.features}")
-                series.features.map { feature ->
-                    println("    Adding feature: $feature")
-                    FeatureEntity(
-                        id = "${series.id}_$feature",
-                        brandId = brand.id,
-                        name = feature
-                    )
-                }
+            brand.features.map { feature ->
+                FeatureEntity(
+                    id = "${brand.brandId}_$feature",
+                    brandId = brand.brandId,
+                    name = feature
+                )
             }
         }
 
@@ -63,5 +58,7 @@ class CatalogSeeder @Inject constructor(
         brandDao.insertAll(brandEntities)
         seriesDao.insertAll(seriesEntities)
         featureDao.insertAll(featureEntities)
+
+        seedFlagRepo.setCatalogSeeded()
     }
 }

@@ -4,7 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class BrandDto(
-    val id: String,
-    val name: String,
-    val series: List<SeriesDto>
+    val brandId: String,
+    val brandName: String,
+    val series: List<SeriesDto>,
+    val features: List<String>
 )

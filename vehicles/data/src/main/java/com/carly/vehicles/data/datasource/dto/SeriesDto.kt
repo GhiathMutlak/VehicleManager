@@ -8,5 +8,4 @@ data class SeriesDto(
     val name: String,
     val minYear: Int,
     val maxYear: Int,
-    val features: List<String>
 )
