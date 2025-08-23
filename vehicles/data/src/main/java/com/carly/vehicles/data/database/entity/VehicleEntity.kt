@@ -6,7 +6,8 @@ import com.carly.vehicles.domain.model.FuelType
 
 @Entity(tableName = "vehicles")
 data class VehicleEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
     val brand: String,
     val series: String,
     val year: Int,

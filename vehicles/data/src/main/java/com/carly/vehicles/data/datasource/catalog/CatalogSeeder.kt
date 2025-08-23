@@ -33,13 +33,13 @@ class CatalogSeeder @Inject constructor(
         }
 
         val seriesEntities = catalog.flatMap { brand ->
-            brand.series.map { s ->
+            brand.series.map { series ->
                 SeriesEntity(
-                    id = s.id,
+                    id = series.id,
                     brandId = brand.brandId,
-                    name = s.name,
-                    minYear = s.minYear,
-                    maxYear = s.maxYear
+                    name = series.name,
+                    minYear = series.minYear,
+                    maxYear = series.maxYear
                 )
             }
         }
