@@ -17,7 +17,7 @@ sealed class Screen(val route: String) {
 
     object FuelType : Screen("fuel_type")
 
-    object YourCars : Screen("your_cars")
+    object MyCarsList : Screen("my_cars_list")
 
     object Dashboard : Screen("dashboard")
 }

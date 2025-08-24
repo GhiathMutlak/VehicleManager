@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.carly.vehicles.presentation.ui.dashboard.DashboardScreen
+import com.carly.vehicles.presentation.ui.mycarslist.MyCarsListScreen
 
 @Composable
 fun NavigationRoot(
@@ -13,10 +14,14 @@ fun NavigationRoot(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Dashboard.route
+        startDestination = Screen.MyCarsList.route
     ) {
         composable(Screen.Dashboard.route) {
             DashboardScreen()
+        }
+
+        composable(Screen.MyCarsList.route) {
+            MyCarsListScreen()
         }
     }
 }

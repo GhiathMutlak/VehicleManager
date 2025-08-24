@@ -5,11 +5,14 @@ import androidx.datastore.preferences.core.Preferences
 import com.carly.vehicles.data.database.dao.BrandDao
 import com.carly.vehicles.data.database.dao.FeatureDao
 import com.carly.vehicles.data.database.dao.SeriesDao
+import com.carly.vehicles.data.database.dao.VehicleDao
 import com.carly.vehicles.data.datasource.catalog.CatalogLoader
 import com.carly.vehicles.data.datasource.catalog.CatalogSeeder
+import com.carly.vehicles.data.repo.RoomVehicleRepo
 import com.carly.vehicles.data.repo.datastore.DataStoreSelectionRepo
 import com.carly.vehicles.data.repo.datastore.SeedFlagRepo
-import com.carly.vehicles.domain.repo.SelectionRepo
+import com.carly.vehicles.domain.repo.VehicleRepo
+import com.carly.vehicles.domain.repo.VehicleSelectionRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,11 +37,16 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideSelectionRepo(dataStore: DataStore<Preferences>): SelectionRepo =
+    fun provideSelectionRepo(dataStore: DataStore<Preferences>): VehicleSelectionRepository =
         DataStoreSelectionRepo(dataStore)
 
     @Provides
     @Singleton
     fun provideSeedFlagRepo(dataStore: DataStore<Preferences>): SeedFlagRepo =
         SeedFlagRepo(dataStore)
+
+    @Provides
+    @Singleton
+    fun provideVehicleRepo(vehicleDao: VehicleDao): VehicleRepo =
+        RoomVehicleRepo(vehicleDao)
 }

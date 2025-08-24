@@ -8,4 +8,7 @@ android {
 
 dependencies {
     implementation(projects.vehicles.domain)
+    
+    // Hilt Navigation Compose
+    implementation(libs.androidx.hilt.navigation.compose)
 }

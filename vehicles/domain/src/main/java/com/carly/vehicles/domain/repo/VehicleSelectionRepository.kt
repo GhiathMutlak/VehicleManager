@@ -4,7 +4,7 @@ import com.carly.vehicles.domain.util.DataError
 import com.carly.vehicles.domain.util.EmptyResult
 import kotlinx.coroutines.flow.Flow
 
-interface SelectionRepo {
+interface VehicleSelectionRepository {
     val selectedVehicleId: Flow<Long?>
     suspend fun setSelectedVehicleId(id: Long?): EmptyResult<DataError.Local>
 }

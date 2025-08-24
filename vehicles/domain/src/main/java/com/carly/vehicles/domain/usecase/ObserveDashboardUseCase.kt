@@ -2,18 +2,17 @@ package com.carly.vehicles.domain.usecase
 
 import com.carly.vehicles.domain.model.Dashboard
 import com.carly.vehicles.domain.repo.CatalogRepo
-import com.carly.vehicles.domain.repo.SelectionRepo
 import com.carly.vehicles.domain.repo.VehicleRepo
+import com.carly.vehicles.domain.repo.VehicleSelectionRepository
 import com.carly.vehicles.domain.util.Result.Failure
 import com.carly.vehicles.domain.util.Result.Success
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import kotlin.let
 
 
 class ObserveDashboard(
     private val vehicles: VehicleRepo,
-    private val selection: SelectionRepo,
+    private val selection: VehicleSelectionRepository,
     private val catalog: CatalogRepo
 ) {
     fun stream(): Flow<Dashboard> = combine(
