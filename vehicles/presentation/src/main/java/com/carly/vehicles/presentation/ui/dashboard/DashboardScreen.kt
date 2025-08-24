@@ -5,5 +5,7 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun DashboardScreen(modifier: Modifier = Modifier) {
-    DashboardScreenContent()
+    DashboardScreenContent(
+        selectedCar = null
+    )
 }

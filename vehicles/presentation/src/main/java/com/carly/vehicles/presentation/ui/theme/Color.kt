@@ -10,7 +10,7 @@ val fontLight = Color(0xFFF7F7F7)
 
 val backgroundDark = Color(0xFF23262B)
 val backgroundLight = Color(0xFF3B404A)
-val backgroundItem = Color(0xFF353942)
+val backgroundItem = Color(0xFF2F3239)
 
 val primaryText = Color(0xFFFFFFFF)
 val secondaryText = Color(0xFFACB7C6)
