@@ -48,7 +48,6 @@ fun DashboardScreenContent(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFF1A1A1A))
     ) {
         // Background image with overlay
         Image(

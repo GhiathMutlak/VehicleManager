@@ -2,6 +2,7 @@ package com.carly.vehicles.presentation.di
 
 import com.carly.vehicles.domain.repo.VehicleRepo
 import com.carly.vehicles.domain.repo.VehicleSelectionRepository
+import com.carly.vehicles.domain.usecase.CreateVehicleUseCase
 import com.carly.vehicles.domain.usecase.DeleteVehicleUseCase
 import com.carly.vehicles.domain.usecase.SetSelectedVehicleUseCase
 import dagger.Module
@@ -26,4 +27,10 @@ object UseCaseModule {
     fun provideSetSelectedVehicle(
         vehicleSelectionRepository: VehicleSelectionRepository
     ): SetSelectedVehicleUseCase = SetSelectedVehicleUseCase(vehicleSelectionRepository)
+
+    @Provides
+    @Singleton
+    fun provideCreateVehicle(
+        vehicleRepo: VehicleRepo
+    ): CreateVehicleUseCase = CreateVehicleUseCase(vehicleRepo)
 }

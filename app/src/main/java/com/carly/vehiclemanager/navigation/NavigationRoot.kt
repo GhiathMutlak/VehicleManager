@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.carly.vehicles.presentation.ui.createvehicle.CreateVehicleScreen
 import com.carly.vehicles.presentation.ui.dashboard.DashboardScreen
 import com.carly.vehicles.presentation.ui.mycarslist.MyCarsListScreen
 
@@ -14,7 +15,7 @@ fun NavigationRoot(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.MyCarsList.route
+        startDestination = Screen.CreateVehicle.route
     ) {
         composable(Screen.Dashboard.route) {
             DashboardScreen()
@@ -22,6 +23,21 @@ fun NavigationRoot(
 
         composable(Screen.MyCarsList.route) {
             MyCarsListScreen()
+        }
+
+        composable(Screen.CreateVehicle.route) {
+            CreateVehicleScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onVehicleCreated = { vehicleId ->
+                    navController.navigate(Screen.Dashboard.route) {
+                        popUpTo(Screen.CreateVehicle.route) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
         }
     }
 }

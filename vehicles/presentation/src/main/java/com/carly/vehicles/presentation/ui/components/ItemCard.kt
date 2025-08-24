@@ -36,12 +36,13 @@ fun ItemCard(
     title: String,
     onClick: () -> Unit,
     isDividerVisible: Boolean = true,
+    backgroundColor: Color = MaterialTheme.colorScheme.tertiaryContainer
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth(),
         shape = RectangleShape,
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer),
+        colors = CardDefaults.cardColors(containerColor = backgroundColor),
         onClick = { onClick() },
     ) {
         Column{

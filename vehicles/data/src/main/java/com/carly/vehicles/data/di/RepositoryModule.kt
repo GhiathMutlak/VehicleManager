@@ -8,9 +8,11 @@ import com.carly.vehicles.data.database.dao.SeriesDao
 import com.carly.vehicles.data.database.dao.VehicleDao
 import com.carly.vehicles.data.datasource.catalog.CatalogLoader
 import com.carly.vehicles.data.datasource.catalog.CatalogSeeder
+import com.carly.vehicles.data.repo.RoomCatalogRepo
 import com.carly.vehicles.data.repo.RoomVehicleRepo
 import com.carly.vehicles.data.repo.datastore.DataStoreSelectionRepo
 import com.carly.vehicles.data.repo.datastore.SeedFlagRepo
+import com.carly.vehicles.domain.repo.CatalogRepo
 import com.carly.vehicles.domain.repo.VehicleRepo
 import com.carly.vehicles.domain.repo.VehicleSelectionRepository
 import dagger.Module
@@ -49,4 +51,12 @@ object RepositoryModule {
     @Singleton
     fun provideVehicleRepo(vehicleDao: VehicleDao): VehicleRepo =
         RoomVehicleRepo(vehicleDao)
+
+    @Provides
+    @Singleton
+    fun provideCatalogRepo(
+        brandDao: BrandDao,
+        seriesDao: SeriesDao,
+        featureDao: FeatureDao
+    ): CatalogRepo = RoomCatalogRepo(brandDao, seriesDao, featureDao)
 }

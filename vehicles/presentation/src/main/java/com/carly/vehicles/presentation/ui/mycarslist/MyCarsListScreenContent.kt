@@ -1,5 +1,6 @@
 package com.carly.vehicles.presentation.ui.mycarslist
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -32,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,7 +57,7 @@ fun MyCarsListScreenContent(
             CarlyTopAppBar(
                 title = "Your Cars",
                 onNavigateBack = onNavigateBack,
-                backgroundColor = MaterialTheme.colorScheme.tertiaryContainer
+                backgroundColor = Color.Transparent
             )
         },
         snackbarHost = {
@@ -66,6 +68,15 @@ fun MyCarsListScreenContent(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFF3A3F49), // gradientTop
+                            Color(0xFF2E323A), // gradientMiddle
+                            Color(0xFF23262B)  // gradientBottom
+                        )
+                    )
+                )
                 .padding(paddingValues)
                 .padding(horizontal = 16.dp)
         ) {
