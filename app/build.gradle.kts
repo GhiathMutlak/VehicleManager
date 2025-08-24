@@ -34,4 +34,5 @@ dependencies {
 
     implementation(projects.vehicles.presentation)
     implementation(projects.vehicles.data)
+    implementation(projects.vehicles.domain)
 }

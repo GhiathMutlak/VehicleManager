@@ -25,7 +25,8 @@ import com.carly.vehicles.presentation.ui.theme.VehicleManagerTheme
 @Composable
 fun CarInfo(
     modifier: Modifier = Modifier,
-    vehicle: Vehicle
+    vehicle: Vehicle,
+    onSwitchCar: () -> Unit = {}
 ) {
     Row(modifier = modifier.fillMaxWidth()) {
         Column {
@@ -48,7 +49,7 @@ fun CarInfo(
 
         IconButton(
             modifier = Modifier.size(48.dp),
-            onClick = { /* TODO: Handle car switch action */ },
+            onClick = onSwitchCar,
         ) {
             Icon(
                 modifier = Modifier.size(32.dp),
@@ -71,7 +72,8 @@ private fun CarInfoPrev() {
                 series = "X5",
                 year = 2020,
                 fuel = FuelType.Diesel
-            )
+            ),
+            onSwitchCar = {}
         )
     }
 }

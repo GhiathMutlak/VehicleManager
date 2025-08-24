@@ -43,11 +43,15 @@ import com.carly.vehicles.presentation.ui.components.ItemCard
 @Composable
 fun DashboardScreenContent(
     modifier: Modifier = Modifier,
-    selectedCar: Vehicle? = null
+    selectedCar: Vehicle? = null,
+    features: Set<Feature> = emptySet(),
+    onNavigateToCreateVehicle: () -> Unit,
+    onSwitchCar: () -> Unit = {}
 ) {
     Box(
         modifier = modifier
             .fillMaxSize()
+            .background(Color(0xFF1A1A1A))
     ) {
         // Background image with overlay
         Image(
@@ -80,7 +84,7 @@ fun DashboardScreenContent(
                         .size(120.dp) // Larger clickable area
                         .clip(CircleShape)
                         .clickable(
-                            onClick = { /* TODO: Handle add car action */ },
+                            onClick = onNavigateToCreateVehicle,
                             indication = ripple(bounded = false),
                             interactionSource = remember { MutableInteractionSource() }
                         )
@@ -119,7 +123,10 @@ fun DashboardScreenContent(
                 Spacer(modifier = Modifier.height(40.dp))
 
                 // Vehicle Info Section
-                CarInfo(vehicle = selectedCar)
+                CarInfo(
+                    vehicle = selectedCar,
+                    onSwitchCar = onSwitchCar
+                )
 
                 Spacer(modifier = Modifier.height(40.dp))
 
@@ -140,13 +147,7 @@ fun DashboardScreenContent(
                 Spacer(modifier = Modifier.height(40.dp))
 
                 // Discover Your Car Section
-                DiscoverYourCarSection(
-                    setOf(
-                        Feature.Diagnostics,
-                        Feature.LiveData,
-                        Feature.CarCheck,
-                    )
-                )
+                DiscoverYourCarSection(features)
 
                 Spacer(modifier = Modifier.height(20.dp))
             }
@@ -192,7 +193,10 @@ private fun DiscoverYourCarSection(
 fun CarlyAppScreenPreview() {
     MaterialTheme {
         DashboardScreenContent(
-            selectedCar = null
+            selectedCar = null,
+            features = emptySet(),
+            onNavigateToCreateVehicle = {},
+            onSwitchCar = {}
         )
     }
 }
@@ -208,7 +212,14 @@ fun CarlyAppScreenPreviewWithCar() {
                 series = "X5",
                 year = 2020,
                 fuel = FuelType.Diesel
-            )
+            ),
+            features = setOf(
+                Feature.Diagnostics,
+                Feature.LiveData,
+                Feature.CarCheck
+            ),
+            onNavigateToCreateVehicle = {},
+            onSwitchCar = {}
         )
     }
 }

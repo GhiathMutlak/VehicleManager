@@ -15,10 +15,17 @@ fun NavigationRoot(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.CreateVehicle.route
+        startDestination = Screen.Dashboard.route
     ) {
         composable(Screen.Dashboard.route) {
-            DashboardScreen()
+            DashboardScreen(
+                onNavigateToCreateVehicle = {
+                    navController.navigate(Screen.CreateVehicle.route)
+                },
+                onSwitchCar = {
+                    navController.navigate(Screen.MyCarsList.route)
+                }
+            )
         }
 
         composable(Screen.MyCarsList.route) {
