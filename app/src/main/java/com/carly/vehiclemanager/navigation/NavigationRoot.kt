@@ -29,7 +29,14 @@ fun NavigationRoot(
         }
 
         composable(Screen.MyCarsList.route) {
-            MyCarsListScreen()
+            MyCarsListScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onNavigateToAddVehicle = {
+                    navController.navigate(Screen.CreateVehicle.route)
+                }
+            )
         }
 
         composable(Screen.CreateVehicle.route) {

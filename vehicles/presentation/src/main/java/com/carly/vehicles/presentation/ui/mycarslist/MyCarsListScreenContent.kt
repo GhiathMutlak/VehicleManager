@@ -49,8 +49,8 @@ import com.carly.vehicles.presentation.ui.theme.VehicleManagerTheme
 @Composable
 fun MyCarsListScreenContent(
     state: MyCarsListState = MyCarsListState(),
-    onAction: (MyCarsListAction) -> Unit = {},
-    onNavigateBack: () -> Unit = {},
+    onAction: (MyCarsListAction) -> Unit,
+    onNavigateBack: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
 ) {
     Scaffold(
@@ -211,7 +211,9 @@ fun MyCarsListScreenContentPreview() {
                     Vehicle(3L, "Mercedes", "C class", 2008, FuelType.Diesel)
                 ),
                 selectedVehicleId = 2L
-            )
+            ),
+            onAction = {},
+            onNavigateBack = {},
         )
     }
 }

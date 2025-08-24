@@ -9,18 +9,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.carly.vehicles.presentation.ui.theme.VehicleManagerTheme
 import com.carly.vehicles.presentation.util.ObserveAsEvents
 import kotlinx.coroutines.launch
 
 @Composable
 fun MyCarsListScreen(
     viewModel: MyCarsListViewModel = hiltViewModel(),
-    onNavigateBack: () -> Unit = {},
-    onNavigateToAddVehicle: () -> Unit = {}
+    onNavigateBack: () -> Unit,
+    onNavigateToAddVehicle: () -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -47,12 +45,4 @@ fun MyCarsListScreen(
         onNavigateBack = onNavigateBack,
         snackbarHostState = snackbarHostState
     )
-}
-
-@Preview
-@Composable
-fun MyCarsListScreenPreview() {
-    VehicleManagerTheme {
-        MyCarsListScreen()
-    }
 }
