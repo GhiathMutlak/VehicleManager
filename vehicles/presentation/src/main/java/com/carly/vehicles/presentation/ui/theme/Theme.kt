@@ -8,9 +8,12 @@ private val DarkColorScheme = darkColorScheme(
     primary = primary,
     secondary = secondary,
     background = backgroundDark,
-    onBackground = fontLight,
+    onBackground = primaryText,
     surface = backgroundLight,
-    onSurface = fontDark
+    onSurface = secondaryText,
+    onPrimaryContainer = fontLight,
+    onSecondaryContainer = fontDark,
+    tertiaryContainer = backgroundItem
 )
 
 @Composable

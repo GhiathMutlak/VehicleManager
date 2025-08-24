@@ -2,6 +2,9 @@ package com.carly.vehicles.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.carly.vehicles.data.database.converter.FeatureConverter
+import com.carly.vehicles.data.database.converter.FuelTypeConverter
 import com.carly.vehicles.data.database.dao.BrandDao
 import com.carly.vehicles.data.database.dao.CatalogDao
 import com.carly.vehicles.data.database.dao.FeatureDao
@@ -24,6 +27,7 @@ import com.carly.vehicles.data.database.entity.VehicleEntity
     version = 1,
     exportSchema = false
 )
+@TypeConverters(FuelTypeConverter::class, FeatureConverter::class)
 abstract class VehiclesDatabase : RoomDatabase() {
     abstract fun brandDao(): BrandDao
     abstract fun catalogDao(): CatalogDao
