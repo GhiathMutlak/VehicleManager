@@ -2,6 +2,7 @@ package com.carly.vehicles.presentation.ui.dashboard
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,12 +11,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -48,34 +56,70 @@ fun DashboardScreenContent(
             alpha = 0.3f
         )
 
-        if (selectedCar == null) {
-            // Car Image (centered)
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.add_car),
-                    contentDescription = "Car",
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = "Carly Logo",
+                modifier = Modifier.size(100.dp)
+            )
+
+            if (selectedCar == null) {
+                // Add Car Button
+                Box(
                     modifier = Modifier
-                        .size(90.dp)
-                )
-            }
-        } else {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-
-                Image(
-                    painter = painterResource(id = R.drawable.logo),
-                    contentDescription = "Carly Logo",
-                    modifier = Modifier.size(100.dp)
-                )
-
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    IconButton(
+                        onClick = { /* TODO: Handle add car action */ },
+                        modifier = Modifier
+                            .size(120.dp) // Larger clickable area
+                    ) {
+                        // Custom add button with glowing background
+                        Box(
+                            modifier = Modifier
+                                .size(100.dp)
+                                .clip(CircleShape)
+                                .border(
+                                    width = 1.dp,
+                                    brush = Brush.horizontalGradient(
+                                        colors = listOf(
+                                            Color.White.copy(alpha = 0.8f),
+                                            Color.White.copy(alpha = 0.4f),
+                                            Color.White.copy(alpha = 0.2f),
+                                            Color.White.copy(alpha = 0.1f)
+                                        )
+                                    ),
+                                    shape = CircleShape
+                                )
+                                .background(
+                                    brush = Brush.horizontalGradient(
+                                        colors = listOf(
+                                            Color.White.copy(alpha = 0.5f),
+                                            Color.White.copy(alpha = 0.25f),
+                                            Color.Gray.copy(alpha = 0.1f),
+                                            Color.Gray.copy(alpha = 0.05f)
+                                        )
+                                    )
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Add,
+                                contentDescription = "Add Car",
+                                tint = Color.White,
+                                modifier = Modifier.size(64.dp)
+                            )
+                        }
+                    }
+                }
+            } else {
                 Spacer(modifier = Modifier.height(40.dp))
 
                 // Vehicle Info Section
@@ -137,7 +181,7 @@ private fun DiscoverYourCarSection(
             ),
             modifier = Modifier.padding(bottom = 16.dp)
         )
-        
+
         // Feature Cards
         ElevatedCard {
             val featureList = features.toList()
@@ -160,6 +204,22 @@ fun CarlyAppScreenPreview() {
     MaterialTheme {
         DashboardScreenContent(
             selectedCar = null
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CarlyAppScreenPreviewWithCar() {
+    MaterialTheme {
+        DashboardScreenContent(
+            selectedCar = Vehicle(
+                id = 1,
+                brand = "BMW",
+                series = "X5",
+                year = 2020,
+                fuel = FuelType.Diesel
+            )
         )
     }
 }
