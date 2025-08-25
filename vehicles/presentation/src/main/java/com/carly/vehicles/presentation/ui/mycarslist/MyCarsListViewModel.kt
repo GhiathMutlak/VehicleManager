@@ -64,7 +64,9 @@ class MyCarsListViewModel @Inject constructor(
             is MyCarsListAction.SelectVehicle -> {
                 viewModelScope.launch {
                     val result = setSelectedVehicleUseCase(action.vehicleId)
-                    if (result is Result.Failure) {
+                    if (result is Result.Success) {
+                        _events.emit(MyCarsListEvent.NavigateToDashboard)
+                    } else {
                         _events.emit(MyCarsListEvent.Error("Failed to select vehicle"))
                     }
                 }

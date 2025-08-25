@@ -18,7 +18,8 @@ import kotlinx.coroutines.launch
 fun MyCarsListScreen(
     viewModel: MyCarsListViewModel = hiltViewModel(),
     onNavigateBack: () -> Unit,
-    onNavigateToAddVehicle: () -> Unit
+    onNavigateToAddVehicle: () -> Unit,
+    onNavigateToDashboard: () -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -27,6 +28,7 @@ fun MyCarsListScreen(
     ObserveAsEvents(viewModel.events) { event ->
         when (event) {
             is MyCarsListEvent.NavigateToAddVehicle -> onNavigateToAddVehicle()
+            is MyCarsListEvent.NavigateToDashboard -> onNavigateToDashboard()
             is MyCarsListEvent.Error -> {
                 scope.launch {
                     snackbarHostState.showSnackbar(

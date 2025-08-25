@@ -70,6 +70,13 @@ fun NavigationRoot(
                 },
                 onNavigateToAddVehicle = {
                     navController.navigate(Screen.CreateVehicle.route)
+                },
+                onNavigateToDashboard = {
+                    navController.navigate(Screen.Dashboard.route) {
+                        popUpTo(Screen.MyCarsList.route) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
