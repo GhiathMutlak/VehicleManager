@@ -1,5 +1,9 @@
 package com.carly.vehicles.presentation.ui.mycarslist
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -30,10 +34,12 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -139,21 +145,28 @@ private fun VehicleItemCard(
     onVehicleClick: () -> Unit,
     onDeleteClick: () -> Unit
 ) {
+    val scale by animateFloatAsState(
+        targetValue = if (isSelected) 1.02f else 1f,
+        animationSpec = spring(dampingRatio = 0.8f),
+        label = "vehicle_card_scale"
+    )
+    
+    val borderColor by animateColorAsState(
+        targetValue = if (isSelected) MaterialTheme.colorScheme.primary else Color.Transparent,
+        animationSpec = tween(300),
+        label = "vehicle_card_border"
+    )
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .scale(scale)
             .clip(RoundedCornerShape(12.dp))
             .clickable { onVehicleClick() }
-            .then(
-                if (isSelected) {
-                    Modifier.border(
-                        width = 1.2.dp,
-                        color = MaterialTheme.colorScheme.primary,
-                        shape = RoundedCornerShape(12.dp)
-                    )
-                } else {
-                    Modifier
-                }
+            .border(
+                width = if (isSelected) 1.2.dp else 0.dp,
+                color = borderColor,
+                shape = RoundedCornerShape(12.dp)
             ),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background

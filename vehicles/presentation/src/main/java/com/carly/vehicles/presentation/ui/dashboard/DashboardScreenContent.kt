@@ -69,6 +69,8 @@ fun DashboardScreenContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
+            Spacer(Modifier.height(16.dp))
+
             Image(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Carly Logo",
