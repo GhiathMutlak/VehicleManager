@@ -2,4 +2,10 @@
 <resources>
 
     <style name="Theme.VehicleManager" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.VehicleManager.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.VehicleManager</item>
+    </style>
 </resources>
