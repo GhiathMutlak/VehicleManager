@@ -73,9 +73,10 @@ fun NavigationRoot(
                 },
                 onNavigateToDashboard = {
                     navController.navigate(Screen.Dashboard.route) {
-                        popUpTo(Screen.MyCarsList.route) {
-                            inclusive = true
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = false
                         }
+                        launchSingleTop = true
                     }
                 }
             )
@@ -100,11 +101,12 @@ fun NavigationRoot(
                 onNavigateBack = {
                     navController.popBackStack()
                 },
-                onVehicleCreated = { vehicleId ->
+                onVehicleCreated = {
                     navController.navigate(Screen.Dashboard.route) {
-                        popUpTo(Screen.CreateVehicle.route) {
-                            inclusive = true
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = false
                         }
+                        launchSingleTop = true
                     }
                 }
             )

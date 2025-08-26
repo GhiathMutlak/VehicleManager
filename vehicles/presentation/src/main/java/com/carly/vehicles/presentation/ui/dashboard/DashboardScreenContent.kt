@@ -8,14 +8,20 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -49,17 +55,35 @@ fun DashboardScreenContent(
     onSwitchCar: () -> Unit = {}
 ) {
     Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color(0xFF1A1A1A))
+        modifier = modifier.fillMaxSize()
     ) {
-        // Background image with overlay
+
         Image(
             painter = painterResource(id = R.drawable.background),
             contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop,
-            alpha = 0.3f
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.66f),
+            contentScale = ContentScale.FillWidth
+        )
+        
+        // Gradient overlay starting from middle and going to bottom
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Transparent,
+                            Color(0xFF3A3F49).copy(alpha = 0.7f),
+                            Color(0xFF2E323A).copy(alpha = 0.9f),
+                            Color(0xFF23262B)
+                        ),
+                        startY = 700f,
+                        endY = Float.POSITIVE_INFINITY
+                    )
+                )
         )
 
         Column(
@@ -69,8 +93,6 @@ fun DashboardScreenContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Spacer(Modifier.height(16.dp))
-
             Image(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Carly Logo",
@@ -78,12 +100,12 @@ fun DashboardScreenContent(
             )
 
             if (selectedCar == null) {
-                Spacer(modifier = Modifier.height(220.dp))
+                Spacer(modifier = Modifier.height(180.dp))
 
                 // Custom add button with glowing background
                 Box(
                     modifier = Modifier
-                        .size(120.dp) // Larger clickable area
+                        .size(110.dp) // Larger clickable area
                         .clip(CircleShape)
                         .clickable(
                             onClick = onNavigateToCreateVehicle,
@@ -105,10 +127,10 @@ fun DashboardScreenContent(
                         .background(
                             brush = Brush.horizontalGradient(
                                 colors = listOf(
-                                    Color.White.copy(alpha = 0.5f),
-                                    Color.White.copy(alpha = 0.25f),
-                                    Color.Gray.copy(alpha = 0.1f),
-                                    Color.Gray.copy(alpha = 0.05f)
+                                    Color.White.copy(alpha = 0.7f),
+                                    Color.White.copy(alpha = 0.45f),
+                                    Color.Gray.copy(alpha = 0.3f),
+                                    Color.Gray.copy(alpha = 0.15f)
                                 )
                             )
                         ),
@@ -118,11 +140,11 @@ fun DashboardScreenContent(
                         imageVector = Icons.Default.Add,
                         contentDescription = "Add Car",
                         tint = Color.White,
-                        modifier = Modifier.size(64.dp)
+                        modifier = Modifier.size(80.dp)
                     )
                 }
             } else {
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 // Vehicle Info Section
                 CarInfo(
@@ -130,13 +152,12 @@ fun DashboardScreenContent(
                     onSwitchCar = onSwitchCar
                 )
 
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 // Car Image (centered)
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f),
+                        .fillMaxWidth(),
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
@@ -174,17 +195,35 @@ private fun DiscoverYourCarSection(
 
         // Feature Cards
         ElevatedCard(
-            modifier = Modifier.padding(top = 4.dp)
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .heightIn(max = 350.dp)
+                .border(
+                    width = 1.dp,
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(
+                            Color(0xFF2E3238),
+                            Color(0xFF32363E),
+                            Color(0xFF32363F),
+                        )
+                    ),
+                    shape = RoundedCornerShape(12.dp)
+                ),
+            elevation = CardDefaults.elevatedCardElevation(
+                defaultElevation = 16.dp
+            )
         ) {
             val featureList = features.toList()
 
-            featureList.forEachIndexed { index, feature ->
-                val isLast = index == featureList.lastIndex
-                ItemCard(
-                    title = feature.displayName,
-                    onClick = {},
-                    isDividerVisible = !isLast
-                )
+            LazyColumn {
+                itemsIndexed(featureList) { index, feature ->
+                    val isLast = index == featureList.lastIndex
+                    ItemCard(
+                        title = feature.displayName,
+                        onClick = {},
+                        isDividerVisible = !isLast
+                    )
+                }
             }
         }
     }

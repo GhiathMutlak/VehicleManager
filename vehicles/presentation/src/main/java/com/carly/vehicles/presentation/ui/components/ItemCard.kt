@@ -23,9 +23,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.carly.vehicles.presentation.ui.theme.Typography
 import com.carly.vehicles.presentation.ui.theme.VehicleManagerTheme
@@ -36,19 +38,27 @@ fun ItemCard(
     title: String,
     onClick: () -> Unit,
     isDividerVisible: Boolean = true,
-    backgroundColor: Color = MaterialTheme.colorScheme.tertiaryContainer
+    backgroundColors: List<Color> = listOf<Color>(
+        Color(0xFF26292E),
+        Color(0xFF2C2F35),
+        Color(0xFF32363D),
+    ),
+    itemPadding: Dp = 16.dp
 ) {
     Card(
-        modifier = modifier
-            .fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         shape = RectangleShape,
-        colors = CardDefaults.cardColors(containerColor = backgroundColor),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         onClick = { onClick() },
     ) {
-        Column{
+        Column(
+            modifier = Modifier.background(
+                brush = Brush.horizontalGradient(colors = backgroundColors)
+            )
+        ) {
             Row(
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(all = itemPadding)
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -67,7 +77,7 @@ fun ItemCard(
                             elevation = 4.dp,
                             shape = CircleShape,
                             ambientColor = Color.Black.copy(alpha = 0.3f),
-                            spotColor = Color.Black.copy(alpha = 0.3f)
+                            spotColor = Color.Black.copy(alpha = 0.4f)
                         )
                         .border(
                             BorderStroke(

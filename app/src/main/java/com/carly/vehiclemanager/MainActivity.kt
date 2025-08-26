@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
         
         // Keep splash screen visible until seeding is complete
         splashScreen.setKeepOnScreenCondition {
+            Thread.sleep(1) // Simulate a longer loading for demonstration
             splashViewModel.isLoading.value
         }
 

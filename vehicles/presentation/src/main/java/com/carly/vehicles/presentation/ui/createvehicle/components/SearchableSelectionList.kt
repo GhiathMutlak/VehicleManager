@@ -66,7 +66,8 @@ fun <T> SearchableSelectionList(
                         title = itemText(item),
                         onClick = { onItemClick(item) },
                         isDividerVisible = index < items.lastIndex,
-                        backgroundColor = Color.Transparent
+                        backgroundColors = listOf(Color.Transparent, Color.Transparent),
+                        itemPadding = 10.dp
                     )
                 }
             }

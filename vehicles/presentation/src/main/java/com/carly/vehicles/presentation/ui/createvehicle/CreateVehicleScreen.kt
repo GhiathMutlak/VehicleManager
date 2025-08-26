@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 fun CreateVehicleScreen(
     viewModel: CreateVehicleViewModel = hiltViewModel(),
     onNavigateBack: () -> Unit = {},
-    onVehicleCreated: (Long) -> Unit = {}
+    onVehicleCreated: () -> Unit = {}
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -32,7 +32,7 @@ fun CreateVehicleScreen(
     ObserveAsEvents(viewModel.events) { event ->
         when (event) {
             is CreateVehicleEvent.NavigateBack -> onNavigateBack()
-            is CreateVehicleEvent.VehicleCreated -> onVehicleCreated(event.vehicleId)
+            is CreateVehicleEvent.VehicleCreated -> onVehicleCreated()
             is CreateVehicleEvent.Error -> {
                 scope.launch {
                     snackbarHostState.showSnackbar(event.message)

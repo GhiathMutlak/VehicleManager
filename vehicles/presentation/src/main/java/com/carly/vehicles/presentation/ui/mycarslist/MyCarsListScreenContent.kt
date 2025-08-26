@@ -119,9 +119,18 @@ fun MyCarsListScreenContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
-                    .padding(horizontal = 24.dp),
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(
+                                Color(0xFFFBA00B),
+                                Color(0xFFFCA909), 
+                                Color(0xFFFDC704)
+                            )
+                        ),
+                        shape = RoundedCornerShape(28.dp)
+                    ),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
+                    containerColor = Color.Transparent
                 ),
                 shape = RoundedCornerShape(28.dp)
             ) {
