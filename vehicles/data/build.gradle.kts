@@ -13,4 +13,10 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     implementation(projects.vehicles.domain)
+    
+    // Testing dependencies
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.arch.core.testing)
 }

@@ -11,4 +11,10 @@ dependencies {
     
     // Hilt Navigation Compose
     implementation(libs.androidx.hilt.navigation.compose)
+    
+    // Testing dependencies
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.arch.core.testing)
 }

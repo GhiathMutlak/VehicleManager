@@ -38,6 +38,11 @@ class AndroidLibraryConventionPlugin: Plugin<Project> {
                 "implementation"(libs.findLibrary("hilt.android").get())
                 "ksp"(libs.findLibrary("hilt.compiler").get())
                 "testImplementation"(kotlin("test"))
+                "testImplementation"(libs.findLibrary("junit").get())
+                "testImplementation"(libs.findLibrary("mockito.core").get())
+                "testImplementation"(libs.findLibrary("mockito.kotlin").get())
+                "testImplementation"(libs.findLibrary("androidx.arch.core.testing").get())
+                "testImplementation"(libs.findLibrary("kotlinx.coroutines.test").get())
             }
         }
     }

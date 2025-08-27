@@ -20,11 +20,16 @@ jetbrainsKotlinJvmVersion = "2.2.10"
 ksp = "2.2.10-2.0.2"
 androidTools = "31.12.1"
 kotlinx-serialization = "1.9.0"
+mockito = "4.6.1"
+mockito-kotlin = "4.1.0"
+mockk = "1.13.14"
+arch-core = "2.2.0"
+kotlinx-coroutines-test = "1.10.2"
 
 # Project versions
 projectApplicationId = "com.carly.vehiclesmanager"
 projectVersionName = "1.0"
-projectMinSdkVersion = "29"
+projectMinSdkVersion = "26"
 projectTargetSdkVersion = "36"
 projectCompileSdkVersion = "36"
 projectVersionCode = "1"
@@ -68,6 +73,13 @@ androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-com
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Testing libraries
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+androidx-arch-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "arch-core" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
 
 # Gradle
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
