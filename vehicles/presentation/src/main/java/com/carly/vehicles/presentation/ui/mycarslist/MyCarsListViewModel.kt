@@ -19,6 +19,23 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the My Cars List screen following MVI architecture pattern.
+ * 
+ * Manages the list of user's vehicles, handles vehicle selection and deletion operations,
+ * and maintains the UI state for the vehicles listing screen.
+ * 
+ * Key responsibilities:
+ * - Display list of user's vehicles
+ * - Handle vehicle selection with visual feedback
+ * - Manage vehicle deletion with validation (prevent deleting selected vehicle)
+ * - Navigate to vehicle creation and dashboard screens
+ * 
+ * @param vehicleRepo Repository for vehicle data operations
+ * @param vehicleSelectionRepository Repository for managing selected vehicle state
+ * @param deleteVehicleUseCase Use case for deleting vehicles with business logic
+ * @param setSelectedVehicleUseCase Use case for setting the currently selected vehicle
+ */
 @HiltViewModel
 class MyCarsListViewModel @Inject constructor(
     private val vehicleRepo: VehicleRepo,
@@ -59,6 +76,14 @@ class MyCarsListViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
     
+    /**
+     * Handles user actions from the UI following MVI architecture.
+     * 
+     * Processes all user interactions and updates state or triggers navigation events accordingly.
+     * Implements business logic validation for vehicle deletion (prevents deleting selected vehicle).
+     * 
+     * @param action The user action to process (SelectVehicle, DeleteVehicle, AddNewVehicle)
+     */
     fun onAction(action: MyCarsListAction) {
         when (action) {
             is MyCarsListAction.SelectVehicle -> {

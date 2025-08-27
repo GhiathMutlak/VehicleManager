@@ -26,6 +26,10 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -46,7 +50,12 @@ fun ItemCard(
     itemPadding: Dp = 16.dp
 ) {
     Card(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .semantics {
+                contentDescription = "$title feature button"
+                role = Role.Button
+            },
         shape = RectangleShape,
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         onClick = { onClick() },
@@ -94,7 +103,7 @@ fun ItemCard(
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                        contentDescription = "Back",
+                        contentDescription = "Navigate to $title",
                         tint = MaterialTheme.colorScheme.onSurface
                     )
                 }

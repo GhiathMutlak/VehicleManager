@@ -42,6 +42,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -176,7 +180,15 @@ private fun VehicleItemCard(
                 width = if (isSelected) 1.2.dp else 0.dp,
                 color = borderColor,
                 shape = RoundedCornerShape(12.dp)
-            ),
+            )
+            .semantics {
+                contentDescription = if (isSelected) {
+                    "Currently selected vehicle: ${vehicle.brand} ${vehicle.series}, ${vehicle.year}, ${vehicle.fuel.name}"
+                } else {
+                    "Select vehicle: ${vehicle.brand} ${vehicle.series}, ${vehicle.year}, ${vehicle.fuel.name}"
+                }
+                role = Role.Button
+            },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background
         )
@@ -211,7 +223,7 @@ private fun VehicleItemCard(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Delete,
-                        contentDescription = "Delete vehicle",
+                        contentDescription = "Delete ${vehicle.brand} ${vehicle.series}",
                         tint = MaterialTheme.colorScheme.onBackground,
                         modifier = Modifier.size(20.dp)
                     )

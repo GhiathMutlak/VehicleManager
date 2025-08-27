@@ -17,6 +17,24 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the Dashboard screen implementing MVI architecture.
+ * 
+ * Central hub of the application that displays the currently selected vehicle
+ * and its available features. Adapts the UI based on whether vehicles exist
+ * and provides navigation to vehicle creation and listing screens.
+ * 
+ * Key responsibilities:
+ * - Display selected vehicle information (brand, series, year, fuel type)
+ * - Show dynamic list of features available for the selected vehicle
+ * - Handle empty state when no vehicles exist (show Add Vehicle button)
+ * - Provide navigation to vehicle creation and car selection screens
+ * - Maintain synchronization between selected vehicle and available features
+ * 
+ * @param vehicleSelectionRepository Repository for managing selected vehicle state
+ * @param vehicleRepo Repository for vehicle data operations
+ * @param catalogRepo Repository for accessing vehicle catalog and features data
+ */
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
     private val vehicleSelectionRepository: VehicleSelectionRepository,

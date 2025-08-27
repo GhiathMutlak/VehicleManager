@@ -18,6 +18,23 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the Create Vehicle screen implementing MVI architecture.
+ * 
+ * Manages the multi-step vehicle creation flow including brand selection,
+ * series selection, build year, and fuel type selection with search functionality.
+ * 
+ * Key responsibilities:
+ * - Guide users through step-by-step vehicle creation process
+ * - Load and filter catalog data (brands, series, years)
+ * - Handle search functionality for each selection step
+ * - Create and persist new vehicles with automatic selection
+ * - Navigate between creation steps and back to dashboard
+ * 
+ * @param catalogRepo Repository for accessing vehicle catalog data
+ * @param createVehicleUseCase Use case for creating new vehicles with business validation
+ * @param setSelectedVehicleUseCase Use case for automatically selecting newly created vehicle
+ */
 @HiltViewModel
 class CreateVehicleViewModel @Inject constructor(
     private val catalogRepo: CatalogRepo,
