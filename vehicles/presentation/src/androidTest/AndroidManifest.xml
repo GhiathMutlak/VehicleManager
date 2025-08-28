@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application android:name="dagger.hilt.android.testing.HiltTestApplication">
+        <uses-library android:name="android.test.runner" />
+        
+        <!-- Test activity for UI tests -->
+        <activity
+            android:name="com.carly.vehicles.presentation.TestMainActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Remove startup provider that causes resource conflicts -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
+    </application>
+
+    <instrumentation
+        android:name="dagger.hilt.android.testing.HiltTestRunner"
+        android:targetPackage="com.carly.vehiclemanager" />
+
+</manifest>
