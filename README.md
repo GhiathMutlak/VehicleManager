@@ -103,7 +103,7 @@ User Intent (Actions) → ViewModel (Process) → State Updates → UI Recomposi
 
 1. **Clone the Repository**
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/GhiathMutlak/VehicleManager
    cd VehicleManager
    ```
 
@@ -272,7 +272,7 @@ For technical support or questions:
 - Review this documentation
 - Check the troubleshooting section
 - Examine unit tests for usage examples
-- Contact: [mailto:ghiath.mutlak@gmail.com]
+- Contact: ghiath.mutlak@gmail.com
 
 ---
 
