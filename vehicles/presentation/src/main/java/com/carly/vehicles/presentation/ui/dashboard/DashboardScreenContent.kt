@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -100,7 +101,9 @@ fun DashboardScreenContent(
             )
 
             if (selectedCar == null) {
-                Spacer(modifier = Modifier.height(180.dp))
+                BoxWithConstraints {
+                    Spacer(modifier = Modifier.height(maxHeight * 0.25f)) // 25% of screen height
+                }
 
                 // Custom add button with glowing background
                 Box(
@@ -152,7 +155,9 @@ fun DashboardScreenContent(
                     onSwitchCar = onSwitchCar
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                BoxWithConstraints {
+                    Spacer(modifier = Modifier.height(maxHeight * 0.02f)) // 25% of screen height
+                }
 
                 // Car Image (centered)
                 Box(
@@ -160,14 +165,16 @@ fun DashboardScreenContent(
                         .fillMaxWidth(),
                     contentAlignment = Alignment.Center
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.car),
-                        contentDescription = "Car",
-                        modifier = Modifier.size(280.dp)
-                    )
+                    BoxWithConstraints {
+                        Image(
+                            painter = painterResource(id = R.drawable.car),
+                            contentDescription = "Car",
+                            modifier = Modifier.size(maxWidth * 0.7f) // 70% of screen width
+                        )
+                    }
                 }
 
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 // Discover Your Car Section
                 DiscoverYourCarSection(features)
