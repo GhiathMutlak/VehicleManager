@@ -18,8 +18,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.CardDefaults
@@ -55,131 +57,136 @@ fun DashboardScreenContent(
     onNavigateToCreateVehicle: () -> Unit,
     onSwitchCar: () -> Unit = {}
 ) {
-    Box(
-        modifier = modifier.fillMaxSize()
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .verticalScroll(state = rememberScrollState(),)
     ) {
-
-        Image(
-            painter = painterResource(id = R.drawable.background),
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(0.66f),
-            contentScale = ContentScale.FillWidth
-        )
-        
-        // Gradient overlay starting from middle and going to bottom
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Transparent,
-                            Color(0xFF3A3F49).copy(alpha = 0.7f),
-                            Color(0xFF2E323A).copy(alpha = 0.9f),
-                            Color(0xFF23262B)
-                        ),
-                        startY = 700f,
-                        endY = Float.POSITIVE_INFINITY
-                    )
-                )
-        )
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+        Box {
 
             Image(
-                painter = painterResource(id = R.drawable.logo),
-                contentDescription = "Carly Logo",
-                modifier = Modifier.size(100.dp)
+                painter = painterResource(id = R.drawable.background),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.66f),
+                contentScale = ContentScale.FillWidth
             )
 
-            if (selectedCar == null) {
-                BoxWithConstraints {
-                    Spacer(modifier = Modifier.height(maxHeight * 0.25f)) // 25% of screen height
-                }
-
-                // Custom add button with glowing background
-                Box(
-                    modifier = Modifier
-                        .size(110.dp) // Larger clickable area
-                        .clip(CircleShape)
-                        .clickable(
-                            onClick = onNavigateToCreateVehicle,
-                            indication = ripple(bounded = false),
-                            interactionSource = remember { MutableInteractionSource() }
-                        )
-                        .border(
-                            width = 1.dp,
-                            brush = Brush.horizontalGradient(
-                                colors = listOf(
-                                    Color.White.copy(alpha = 0.8f),
-                                    Color.White.copy(alpha = 0.4f),
-                                    Color.White.copy(alpha = 0.2f),
-                                    Color.White.copy(alpha = 0.1f)
-                                )
+            // Gradient overlay starting from middle and going to bottom
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color.Transparent,
+                                Color(0xFF3A3F49).copy(alpha = 0.7f),
+                                Color(0xFF2E323A).copy(alpha = 0.9f),
+                                Color(0xFF23262B)
                             ),
-                            shape = CircleShape
+                            startY = 700f,
+                            endY = Float.POSITIVE_INFINITY
                         )
-                        .background(
-                            brush = Brush.horizontalGradient(
-                                colors = listOf(
-                                    Color.White.copy(alpha = 0.7f),
-                                    Color.White.copy(alpha = 0.45f),
-                                    Color.Gray.copy(alpha = 0.3f),
-                                    Color.Gray.copy(alpha = 0.15f)
-                                )
-                            )
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "Add Car",
-                        tint = Color.White,
-                        modifier = Modifier.size(80.dp)
                     )
-                }
-            } else {
-                Spacer(modifier = Modifier.height(16.dp))
+            )
 
-                // Vehicle Info Section
-                CarInfo(
-                    vehicle = selectedCar,
-                    onSwitchCar = onSwitchCar
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.logo),
+                    contentDescription = "Carly Logo",
+                    modifier = Modifier.size(100.dp)
                 )
 
-                BoxWithConstraints {
-                    Spacer(modifier = Modifier.height(maxHeight * 0.02f)) // 25% of screen height
-                }
-
-                // Car Image (centered)
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    contentAlignment = Alignment.Center
-                ) {
+                if (selectedCar == null) {
                     BoxWithConstraints {
-                        Image(
-                            painter = painterResource(id = R.drawable.car),
-                            contentDescription = "Car",
-                            modifier = Modifier.size(maxWidth * 0.7f) // 70% of screen width
+                        Spacer(modifier = Modifier.height(maxHeight * 0.25f)) // 25% of screen height
+                    }
+
+                    // Custom add button with glowing background
+                    Box(
+                        modifier = Modifier
+                            .size(110.dp) // Larger clickable area
+                            .clip(CircleShape)
+                            .clickable(
+                                onClick = onNavigateToCreateVehicle,
+                                indication = ripple(bounded = false),
+                                interactionSource = remember { MutableInteractionSource() }
+                            )
+                            .border(
+                                width = 1.dp,
+                                brush = Brush.horizontalGradient(
+                                    colors = listOf(
+                                        Color.White.copy(alpha = 0.8f),
+                                        Color.White.copy(alpha = 0.4f),
+                                        Color.White.copy(alpha = 0.2f),
+                                        Color.White.copy(alpha = 0.1f)
+                                    )
+                                ),
+                                shape = CircleShape
+                            )
+                            .background(
+                                brush = Brush.horizontalGradient(
+                                    colors = listOf(
+                                        Color.White.copy(alpha = 0.7f),
+                                        Color.White.copy(alpha = 0.45f),
+                                        Color.Gray.copy(alpha = 0.3f),
+                                        Color.Gray.copy(alpha = 0.15f)
+                                    )
+                                )
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Add,
+                            contentDescription = "Add Car",
+                            tint = Color.White,
+                            modifier = Modifier.size(80.dp)
                         )
                     }
+                } else {
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    // Vehicle Info Section
+                    CarInfo(
+                        vehicle = selectedCar,
+                        onSwitchCar = onSwitchCar
+                    )
+
+                    BoxWithConstraints {
+                        Spacer(modifier = Modifier.height(maxHeight * 0.02f)) // 25% of screen height
+                    }
+
+                    // Car Image (centered)
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        BoxWithConstraints {
+                            Image(
+                                painter = painterResource(id = R.drawable.car),
+                                contentDescription = "Car",
+                                modifier = Modifier.size(maxWidth * 0.7f) // 70% of screen width
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    // Discover Your Car Section
+                    DiscoverYourCarSection(features)
+
+                    Spacer(modifier = Modifier.height(20.dp))
                 }
 
-                Spacer(modifier = Modifier.height(20.dp))
-
-                // Discover Your Car Section
-                DiscoverYourCarSection(features)
-
-                Spacer(modifier = Modifier.height(20.dp))
             }
         }
     }
