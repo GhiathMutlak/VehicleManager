@@ -29,6 +29,7 @@ class AndroidLibraryConventionPlugin: Plugin<Project> {
                 )
 
                 defaultConfig {
+                    minSdk = libs.findVersion("projectMinSdkVersion").get().toString().toInt()
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }
