@@ -19,3 +19,20 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Room Database
+-keep class androidx.room.** { *; }
+-keep class * extends androidx.room.RoomDatabase { *; }
+-keep @androidx.room.Entity class * { *; }
+-keep @androidx.room.Dao class * { *; }
+
+# Keep all data layer classes
+-keep class com.carly.vehicles.data.** { *; }
+
+# Hilt DI
+-keep class dagger.hilt.** { *; }
+-keep class javax.inject.** { *; }
+
+# DataStore
+-keep class androidx.datastore.** { *; }
+-keep class com.google.protobuf.** { *; }

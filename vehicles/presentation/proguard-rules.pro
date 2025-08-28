@@ -19,3 +19,18 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Jetpack Compose
+-keep class androidx.compose.** { *; }
+-keep class androidx.activity.ComponentActivity { *; }
+-keep class androidx.lifecycle.** { *; }
+
+# Keep all presentation layer classes
+-keep class com.carly.vehicles.presentation.** { *; }
+
+# Hilt DI
+-keep class dagger.hilt.** { *; }
+-keep class javax.inject.** { *; }
+
+# Navigation
+-keep class androidx.navigation.** { *; }
